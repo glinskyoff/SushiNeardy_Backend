@@ -18,21 +18,11 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser());
 
-// export async function getCatalogItems() {
-//   const [rows] = await pool.query("SELECT * FROM catalog");
-//   return rows;
-// }
-
-app.get("/catalog", async (req, res) => {
+app.get("/", async (req, res) => {
   pool.query("SELECT * FROM catalog").then(function (data) {
     res.json(data[0]);
   });
 });
-
-// app.get("/last_id", async (req, res) => {
-//   const last_id = await getLastId();
-//   res.json(last_id);
-// });
 
 app.post("/newOrder", async (req, res) => {
   const data = [
