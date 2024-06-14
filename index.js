@@ -2,21 +2,37 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 
-import { getCatalogItems, getLastId, pool } from "./database.js";
+import mysql from "mysql2";
+
+const pool = mysql
+  .createPool({
+    host: "127.0.0.1",
+    user: "root",
+    password: "root",
+    database: "sushi",
+  })
+  .promise();
+
+// import { getCatalogItems, getLastId, pool } from "./database.js";
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser());
 
+// export async function getCatalogItems() {
+//   const [rows] = await pool.query("SELECT * FROM catalog");
+//   return rows;
+// }
+
 app.get("/catalog", async (req, res) => {
-  const catalog = await getCatalogItems();
+  const catalog = pool.query("SELECT * FROM catalog");
   res.json(catalog);
 });
 
-app.get("/last_id", async (req, res) => {
-  const last_id = await getLastId();
-  res.json(last_id);
-});
+// app.get("/last_id", async (req, res) => {
+//   const last_id = await getLastId();
+//   res.json(last_id);
+// });
 
 app.post("/newOrder", async (req, res) => {
   const data = [
