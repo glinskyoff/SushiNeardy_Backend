@@ -13,7 +13,6 @@ const pool = mysql
   })
   .promise();
 
-// import { getCatalogItems, getLastId, pool } from "./database.js";
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -25,8 +24,9 @@ app.use(bodyParser());
 // }
 
 app.get("/catalog", async (req, res) => {
-  const catalog = pool.query("SELECT * FROM catalog");
-  res.json(catalog);
+  pool.query("SELECT * FROM catalog").then(function (data) {
+    res.json(data[0]);
+  });
 });
 
 // app.get("/last_id", async (req, res) => {
