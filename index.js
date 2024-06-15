@@ -4,12 +4,21 @@ import cors from "cors";
 
 import mysql from "mysql2";
 
+// const pool = mysql
+//   .createPool({
+//     host: "127.0.0.1",
+//     user: "root",
+//     password: "root",
+//     database: "sushi",
+//   })
+//   .promise();
+
 const pool = mysql
   .createPool({
-    host: "127.0.0.1",
-    user: "root",
-    password: "root",
-    database: "sushi",
+    host: "b83ybiotvmvzs5niqhbd-mysql.services.clever-cloud.com",
+    user: "uzfwuahfcjvpnazq",
+    password: "OgxJmrjP9DnFoRXRGyt6",
+    database: "b83ybiotvmvzs5niqhbd",
   })
   .promise();
 
