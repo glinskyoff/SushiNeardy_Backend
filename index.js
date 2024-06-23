@@ -22,6 +22,7 @@ const pool = mysql
     // user: "uzfwuahfcjvpnazq",
     // password: "OgxJmrjP9DnFoRXRGyt6",
     // database: "b83ybiotvmvzs5niqhbd",
+
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
