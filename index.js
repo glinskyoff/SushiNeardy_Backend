@@ -1,8 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import { config } from "dotenv";
 
 import mysql from "mysql2";
+
+config();
 
 // const pool = mysql
 //   .createPool({
@@ -15,10 +18,14 @@ import mysql from "mysql2";
 
 const pool = mysql
   .createPool({
-    host: "b83ybiotvmvzs5niqhbd-mysql.services.clever-cloud.com",
-    user: "uzfwuahfcjvpnazq",
-    password: "OgxJmrjP9DnFoRXRGyt6",
-    database: "b83ybiotvmvzs5niqhbd",
+    // host: "b83ybiotvmvzs5niqhbd-mysql.services.clever-cloud.com",
+    // user: "uzfwuahfcjvpnazq",
+    // password: "OgxJmrjP9DnFoRXRGyt6",
+    // database: "b83ybiotvmvzs5niqhbd",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DBNAME,
   })
   .promise();
 
