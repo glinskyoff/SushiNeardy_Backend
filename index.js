@@ -7,15 +7,6 @@ import mysql from "mysql2";
 
 config();
 
-// const pool = mysql
-//   .createPool({
-//     host: "localhost",
-//     user: "roottt",
-//     password: "",
-//     database: "sushi",
-//   })
-//   .promise();
-
 const pool = mysql
   .createPool({
     // host: "b83ybiotvmvzs5niqhbd-mysql.services.clever-cloud.com",
